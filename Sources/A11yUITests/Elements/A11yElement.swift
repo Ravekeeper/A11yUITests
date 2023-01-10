@@ -11,6 +11,7 @@ struct A11yElement {
     struct CodableElement: Codable {
         static let version = 1
 
+        let identifier: String
         let label: String
         let frame: CGRect
         let type: String
@@ -22,6 +23,7 @@ struct A11yElement {
 
     typealias A11ySnapshot = XCUIElementSnapshot & NSObject
 
+    let identifier: String
     let label: String
     let frame: CGRect
     let type: XCUIElement.ElementType
@@ -76,7 +78,8 @@ struct A11yElement {
     var codable: CodableElement? {
         guard !shouldIgnore else { return nil }
 
-        return CodableElement(label: label,
+        return CodableElement(identifier: identifier,
+                              label: label,
                               frame: frame,
                               type: type.name(),
                               traits: traits?.names() ?? UIAccessibilityTraits.none.names(),
