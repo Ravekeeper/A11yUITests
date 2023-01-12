@@ -267,4 +267,21 @@ final class A11yAssertions {
                           file: file,
                           line: line)
     }
+
+    func overlappingElements(_ element1: A11yElement,
+                             _ element2: A11yElement,
+                             _ file: StaticString,
+                             _ line: UInt) {
+
+        guard element1.isControl,
+              element2.isControl,
+              element1.id != element2.id else { return }
+
+        XCTAssertFalse(element1.frame.intersects(element2.frame),
+                       Failure.warning.report("Elements intersect",
+                                              element1,
+                                              element2),
+                       file: file,
+                       line: line)
+    }
 }

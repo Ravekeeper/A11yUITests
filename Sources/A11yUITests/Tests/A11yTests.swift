@@ -17,5 +17,6 @@ public enum A11yTests: CaseIterable {
          header,
          buttonTrait,
          conflictingTraits,
-         disabled
+         disabled,
+         overlapping
 }

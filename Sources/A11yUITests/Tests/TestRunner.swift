@@ -119,12 +119,20 @@ final class TestRunner {
                                          file,
                                          line)
         }
+
         for element2 in elements {
             if tests.contains(.duplicated) {
                 assertions.duplicatedLabels(element,
                                             element2,
                                             file,
                                             line)
+            }
+
+            if tests.contains(.overlapping) {
+                assertions.overlappingElements(element,
+                                               element2,
+                                               file,
+                                               line)
             }
         }
     }
